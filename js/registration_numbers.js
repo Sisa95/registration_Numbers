@@ -41,10 +41,6 @@ function registrationNumbers(){
         for(var i = 0; i < found.length; i++){
             if(found[i].startsWith(city) ){
                 return found[i]
-            } else if(found[i].startsWith(city)){
-                return found[i]
-            } else if(found[i].startsWith(city)){
-                return found[i]
             }
         }
     }

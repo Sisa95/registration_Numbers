@@ -1,5 +1,5 @@
 function scrollReveal() {
-	var revealPoint = 150;
+	var revealPoint = 100;
 	var revealElement = document.querySelectorAll(".demo"); //select class
 	for (var i = 0; i < revealElement.length; i++) { //iterate over the selected class element
 		var windowHeight = window.innerHeight;
