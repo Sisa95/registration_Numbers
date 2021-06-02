@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>title</title>
+  </head>
+  <body>
+  <div class="container" id="tp">
+
+    <div class="container-fluid demo  border border-info">
+        <div class="col-md-3" id="fe">
+            <a href="tdd/home.html">
+                <button style="text-align: center; background-color:slategrey; font-size: 1.1rem;">Unit Tests</button></a>           
+        </div>
+        <div class="col-md-9" id="fe">
+            <h1 style="text-align: center;">registration Numbers</h1>               
+        </div>
+       
+        <div class="col-md-12" id="fe">
+                <h4 style="text-align: center;" class="errorMsg"></h4>
+        </div>
+
+        <div class="col-md-10" id="fe">
+            <h1 style="text-align: justify; font-size: 1.2em">Please Enter A Valid Registration Number</h1>               
+        </div>
+
+        <div class="row">
+            
+            <div class="col-md-8">
+               <textarea class="text" style="margin:auto;text-align:center; font-style: oblique;font-weight: 500; color: blue;"rows="1" placeholder="CJ 123 456/ CA 123-456/ CY 123456"></textarea>
+            </div>
+            
+
+        </div>
+
+        <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-1 btn-sep icon-info" class="btn" style="background:rgba(252, 252, 252, 0) !important; border-color: rgba(252, 252, 252, 0) !important;"></button>
+                </div>
+            
+                 <div class="col-md-4">
+                        <button class="btn btn-1 btn-sep icon-info addButton">Add</button>
+                </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+              <div class="col-md-12" id="fe">
+                  <h3 style="text-align: justify; font-size: 1.2em; color: #274046 !important;">Select Town To View Stored Registrations From That Town</h3>               
+              </div>
+                  <span style="margin: auto">
+                  <input type="radio" id="cape" name="town" value="CA">
+                  <label for="cape" class="town">Cape Town</label>
+                  <input type="radio" id="bellville" name="town" value="CY">
+                  <label for="bellville" class="town" >Bellville</label>
+                  <input type="radio" id="paarl" name="town" value="CJ">
+                  <label for="paarl" class="town" >Paarl</label></span>
+                  <button class="btn btn-1 btn-sep icon-info filterBtn">Show Selected Only</button>
+          </div>
+      </div>
+    </div>
+
+    <div class="container-fluid demo  border border-info">
+          <div class="col-md-12" id="fe">
+                      <ul class="list-group list-group-horizontal" style="text-align: center; font-style: oblique;" id="myList"></ul>
+                      <ul class="list-group list-group-horizontal" style="text-align: center; font-style: oblique;" id="filterList"></ul>
+          </div>  
+    </div>  
+</div>
+
+<script src="js/bootstrap.js"></script>
+<script src="js/scrollReveal.js" defer></script>
+    <!-- <script src="/js/registration_numbers.js" charset="utf-8"></script> -->
+    <script src="./registration_numbers.js"></script>
+    <script src="js/reg_numbersDOM.js"></script>
+  </body>
+</html>
