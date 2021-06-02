@@ -9,11 +9,12 @@ function registration(){
     var textArea = document.querySelector(".text").value;
 
     let li = document.createElement("button");
-    li.classList.add("btn-success")
+    li.classList.add("reg_plate");
     
     li.innerText = regNumberInstance.cities(textArea) 
     list.appendChild(li);
 }
+
 
 function filterRegTown(){
     var checkedRadioBtn = document.querySelector("input[name='town']:checked");
