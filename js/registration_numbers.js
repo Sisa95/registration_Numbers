@@ -1,6 +1,7 @@
 
 function registrationNumbers(){
-    var found = [];
+    var found = ["CA 555 664", "CA 258 369", "CJ 147 258","CY 555 664", "CJ 258 369"];
+    var filter = []
    
 
     function cities(city){
@@ -38,11 +39,13 @@ function registrationNumbers(){
     }
 
     function filterReg(city){
+        
         for(var i = 0; i < found.length; i++){
             if(found[i].startsWith(city) ){
-                return found[i]
+                filter.push(found[i]);
+                console.log(filter)
             }
-        }
+        } return filter;
     }
     return{
         cities,
