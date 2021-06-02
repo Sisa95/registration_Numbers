@@ -1,50 +1,58 @@
-// alert()
-// function registrationNumbers(){
-//     var found = [];
+
+function registrationNumbers(){
+    var found = [];
    
 
-//     function cities(location, city){
-//         var city =  city.trim().toUpperCase();
+    function cities(city){
+        var city =  city.trim().toUpperCase();
+        var regEx = /^((CA|CJ|CY)\s([0-9]){3}\s([0-9]){3})$/;
+        var regEx2 = /^((CA|CJ|CY)\s([0-9]){3}\-([0-9]){3})$/;
+        var regEx3 = /^(CA|CJ|CY)\s[0-9]{6}$/;
+        var isValid = regEx.test(city)
+        var isValid2 = regEx2.test(city)
+        var isValid3 = regEx3.test(city)
         
-//         if(city.startsWith("CY")){
-//             return "Belville"
-//         } else if(city.startsWith("CJ")){
-//             return "Paarl";
-//         } else if(city.startsWith("CA")){
-//             return "Cape Town";
-//         }
-//     }
+        if(isValid || isValid2 || isValid3){
+            if(!found.includes(city)){
+                found.push(city)
+                return city;
+            } else {
+                return "Town is already stored";
+            }
+        } else {
+            return "Invalid Reg Number"
+        }
+    }
 
-//     function storeTown(town){
-//         var town = town.trim().toUpperCase();
-//         if(!found.includes(town)){
-//             found.push(town)
-//         } else {
-//             return "Town is already stored";
-//         }
-//     }
+    function storeTown(town){
+        var town = town.trim().toUpperCase();
+
+        if(!found.includes(town)){
+            found.push(town)
+        }
+        return;
+    }
     
-//     function getStoreTown(){
-//         return found;
-//     }
+    function getStoreTown(){
+        return found.length;
+    }
 
-//     function filterReg(city){
-//         var selectedCity = city
-//         for(var i = 0; i < found.length; i++){
-//             if(selectedCity == found[i].startsWith("CY")){
-//                 console.log(found[i] + " from bellville")
-//             } else if(selectedCity == found[i].startsWith("CJ")){
-//                 console.log(found[i] + " from paarl")
-//             } else if(selectedCity == found[i].startsWith("CA")){
-//                 console.log(found[i] + " from cape town")
-//             }
-//         }
-//     }
-//     return{
-//         cities,
-//         storeTown,
-//         filterReg,
-//         storeTown,
-//         getStoreTown,
-//     }
-// }
+    function filterReg(city){
+        for(var i = 0; i < found.length; i++){
+            if(found[i].startsWith(city) ){
+                return found[i]
+            } else if(found[i].startsWith(city)){
+                return found[i]
+            } else if(found[i].startsWith(city)){
+                return found[i]
+            }
+        }
+    }
+    return{
+        cities,
+        storeTown,
+        filterReg,
+        storeTown,
+        getStoreTown,
+    }
+}

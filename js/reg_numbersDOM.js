@@ -19,16 +19,18 @@ function filterRegTown(){
     var checkedRadioBtn = document.querySelector("input[name='town']:checked");
 
     if(checkedRadioBtn){
-        list.style.visibility = 'hidden'
+        
+        document.querySelector(".filterBtn").innerText = "Show All Town"
         var countMax = regNumberInstance.getStoreTown();
         for (var i = 0; i < countMax; i++){
             let li = document.createElement("button");
     
             li.innerText = regNumberInstance.filterReg(checkedRadioBtn.value) 
             list2.appendChild(li);
-        }
-    }
-
+        } 
+        
+    } 
+    checkedRadioBtn.checked = false
 }
 
 document.querySelector(".addButton").addEventListener("click", registration);
