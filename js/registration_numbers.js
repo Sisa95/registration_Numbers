@@ -1,6 +1,6 @@
 
 function registrationNumbers(){
-    var found = ["CA 555 664", "CA 258 369", "CJ 147 258","CY 555 664", "CJ 258 369"];
+    var found = []
     var filter = []
    
 
@@ -25,33 +25,26 @@ function registrationNumbers(){
         }
     }
 
-    function storeTown(town){
-        var town = town.trim().toUpperCase();
-
-        if(!found.includes(town)){
-            found.push(town)
-        }
-        return;
+    function allTowns(town){
+        return found;
     }
     
     function getStoreTown(){
-        return found.length;
+        return filter;
     }
 
     function filterReg(city){
-        
+        filter = [];
         for(var i = 0; i < found.length; i++){
             if(found[i].startsWith(city) ){
                 filter.push(found[i]);
-                console.log(filter)
             }
         } return filter;
     }
     return{
         cities,
-        storeTown,
+        allTowns,
         filterReg,
-        storeTown,
         getStoreTown,
     }
 }

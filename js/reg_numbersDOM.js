@@ -15,24 +15,30 @@ function registration(){
     list.appendChild(li);
 }
 
-
 function filterRegTown(){
     var checkedRadioBtn = document.querySelector("input[name='town']:checked");
-
-    if(checkedRadioBtn){
-        
-        document.querySelector(".filterBtn").innerText = "Show All Town"
-        var countMax = regNumberInstance.getStoreTown();
-        for (var i = 0; i < countMax; i++){
-            let li = document.createElement("button");
     
-            li.innerText = regNumberInstance.filterReg(checkedRadioBtn.value) 
-            list2.appendChild(li);
-        } 
-        
+    if(checkedRadioBtn){
+
+        document.querySelector(".filterBtn").innerText = "Show"
+    
+        let li = document.createElement("button");
+        li.classList.add("reg_plate2");
+
+        li.innerText = regNumberInstance.filterReg(checkedRadioBtn.value) 
+        list2.appendChild(li); 
     } 
     checkedRadioBtn.checked = false
+
+    if(checkedRadioBtn){
+        checkedRadioBtn = document.querySelector("input[name='town']:checked");
+        regNumberInstance.filterReg(checkedRadioBtn.value)
+    }
 }
+
+// function clearFilter(){
+//     $('.reg_plate2').remove();
+// }
 
 document.querySelector(".addButton").addEventListener("click", registration);
 document.querySelector(".filterBtn").addEventListener("click", filterRegTown);
