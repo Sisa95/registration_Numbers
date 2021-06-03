@@ -25,12 +25,16 @@ function registrationNumbers(){
         }
     }
 
-    function allTowns(town){
+    function allTowns(){
         return found;
     }
     
     function getStoreTown(){
         return filter;
+    }
+
+    function getFilterLength(){
+        return filter.length
     }
 
     function filterReg(city){
@@ -46,5 +50,6 @@ function registrationNumbers(){
         allTowns,
         filterReg,
         getStoreTown,
+        getFilterLength,
     }
 }
