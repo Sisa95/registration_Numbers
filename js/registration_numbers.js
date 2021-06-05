@@ -17,12 +17,30 @@ function registrationNumbers(){
             if(!found.includes(city)){
                 found.push(city)
                 return city;
-            } else {
+            }
+        }
+    }
+
+    function errorMessages(city){
+        var city =  city.trim().toUpperCase();
+        var regEx = /^((CA|CJ|CY)\s([0-9]){3}\s([0-9]){3})$/;
+        var regEx2 = /^((CA|CJ|CY)\s([0-9]){3}\-([0-9]){3})$/;
+        var regEx3 = /^(CA|CJ|CY)\s[0-9]{6}$/;
+        var isValid = regEx.test(city)
+        var isValid2 = regEx2.test(city)
+        var isValid3 = regEx3.test(city)
+
+        if(isValid || isValid2 || isValid3){
+            if(!found.includes(city)){
+                found.push(city)
+                return city;
+            } else{
                 return "Town is already stored";
             }
         } else {
-            return "Invalid Reg Number"
+            return "Invalid Reg Number";
         }
+
     }
 
     function allTowns(){
@@ -50,6 +68,7 @@ function registrationNumbers(){
         allTowns,
         filterReg,
         getStoreTown,
+        errorMessages,
         getFilterLength,
     }
 }
