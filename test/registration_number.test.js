@@ -24,8 +24,8 @@ describe('Registration numbers', function(){
         regNumbers.cities("CY 122123")
         regNumbers.cities("CA 123123")
         regNumbers.cities("CJ 123123")
-        regNumbers.filterReg("CA")
+        regNumbers.filterReg("CJ")
         
-        assert.equal(["CA 123123"], regNumbers.getStoreTown());
+        assert.equal(["CJ 123123"], regNumbers.getStoreTown());
     });
 })
