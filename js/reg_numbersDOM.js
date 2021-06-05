@@ -3,7 +3,6 @@ var checkedRadioBtn = document.querySelector("input[name='town']:checked");
 let listCA = document.getElementById("filterCA");
 let listCJ = document.getElementById("filterCJ");
 let listCY = document.getElementById("filterCY");
-    
 
 var regNumberInstance = registrationNumbers()
 function registration(){
@@ -22,22 +21,21 @@ function filterRegTown(){
     
     if(checkedRadioBtn){
         filtered = regNumberInstance.filterReg(checkedRadioBtn.value)
+        filtered = filtered
+        
 
         if(checkedRadioBtn.value == "CA"){
             if (document.getElementsByClassName('reg_plate2').length){
-                document.querySelectorAll(".reg_plate2") .forEach(e => e.remove())
-                alert("DELETED") 
+                document.querySelectorAll(".reg_plate2").forEach(e => e.remove())
             }
         } 
         else if(checkedRadioBtn.value == "CY"){
             if (document.getElementsByClassName('reg_plate2').length){
-                document.querySelectorAll(".reg_plate2") .forEach(e => e.remove())
-                alert("DELETED") 
+                document.querySelectorAll(".reg_plate2").forEach(e => e.remove())
             }
         } else if(checkedRadioBtn.value == "CJ"){
             if (document.getElementsByClassName('reg_plate2').length){
-                document.querySelectorAll(".reg_plate2") .forEach(e => e.remove())
-                alert("DELETED")
+                document.querySelectorAll(".reg_plate2").forEach(e => e.remove())
             }
         }
 
@@ -46,52 +44,46 @@ function filterRegTown(){
                if(listCA.style.display = "none"){
                     listCA.style.display = "block";
                     if (!document.getElementsByClassName('reg_plate2').length){
-                        alert("keep CA")
                         listCJ.style.display = "none";
                         listCY.style.display = "none";
-                        listCA.style.backgroundColor = "silver"
-    
-                        let li = document.createElement("button");
-                        li.classList.add("reg_plate2");
-    
-                        li.innerText =  filtered[i];
-                        listCA.appendChild(li);
+                        listCA.style.backgroundColor = "#817900de" 
                     }
                }
+                    let li = document.createElement("button");
+                    li.classList.add("reg_plate2");
+
+                    li.innerText =  filtered[i];
+                    listCA.appendChild(li);
                   
             } else if(checkedRadioBtn.value == "CY"){
                 if(listCY.style.display = "none"){
                     listCY.style.display = "block";
                     if(!document.getElementsByClassName('reg_plate2').length){
-                        alert("keep CY")
                         listCA.style.display = "none";
                         listCJ.style.display = "none";
-                        listCY.style.backgroundColor = "silver"
-                        
-                        let li = document.createElement("button");
-                        li.classList.add("reg_plate2");
-        
-                        li.innerText =  filtered[i];
-                        listCY.appendChild(li);
+                        listCY.style.backgroundColor = "#817900de"
                     }
                 }
+                    let li = document.createElement("button");
+                    li.classList.add("reg_plate2");
+    
+                    li.innerText =  filtered[i];
+                    listCY.appendChild(li);
                
             } else if(checkedRadioBtn.value == "CJ"){
                 if(listCJ.style.display = "none"){
                     listCJ.style.display = "block";
                     if(!document.getElementsByClassName('reg_plate2').length){
-                        alert("Keep CJ")
                         listCA.style.display = "none";
                         listCY.style.display = "none";
-                        listCJ.style.backgroundColor = "silver"
-
-                        let li = document.createElement("button");
-                        li.classList.add("reg_plate2");
-
-                        li.innerText =  filtered[i];
-                        listCJ.appendChild(li); 
+                        listCJ.style.backgroundColor = "#817900de"
                     }
-                }                
+                }
+                    let li = document.createElement("button");
+                    li.classList.add("reg_plate2");
+
+                    li.innerText =  filtered[i];
+                    listCJ.appendChild(li);                 
             }
         }
     } 
@@ -99,7 +91,6 @@ function filterRegTown(){
 
     if(checkedRadioBtn){
         checkedRadioBtn = document.querySelector("input[name='town']:checked");
-        // regNumberInstance.filterReg(checkedRadioBtn.value)
     }
 }
 
