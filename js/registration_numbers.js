@@ -1,6 +1,6 @@
 
-function registrationNumbers(){
-    var found = []
+function registrationNumbers(regStored){
+    var found =regStored || []
     var filter = []
    
 
@@ -17,11 +17,7 @@ function registrationNumbers(){
             if(!found.includes(city)){
                 found.push(city)
                 return city;
-            }  else{
-                return "Town is already stored";
             }
-        } else {
-            return "Invalid Reg Number";
         }
     }
 

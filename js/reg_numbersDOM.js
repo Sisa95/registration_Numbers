@@ -3,10 +3,11 @@ var checkedRadioBtn = document.querySelector("input[name='town']:checked");
 let listCA = document.getElementById("filterCA");
 let listCJ = document.getElementById("filterCJ");
 let listCY = document.getElementById("filterCY");
+var regStored;
 
-
-    var regStored = JSON.parse(localStorage.getItem('registrations'));
     if(localStorage['registrations']){
+        regStored = JSON.parse(localStorage.getItem('registrations'));
+    
         if (document.getElementsByClassName('reg_plate').length){
             document.querySelectorAll(".reg_plate").forEach(e => e.remove())
         }
@@ -20,16 +21,32 @@ let listCY = document.getElementById("filterCY");
         }
     }
 
-
-
-
-var regNumberInstance = registrationNumbers()
-var storeReg = []
+var regNumberInstance = registrationNumbers(regStored)
+var storeReg = regStored || []
 function registration(){
   
     var textArea = document.querySelector(".text").value;
+    
+        var city =  textArea.trim().toUpperCase();
+        var regEx = /^((CA|CJ|CY)\s([0-9]){3}\s([0-9]){3})$/;
+        var regEx2 = /^((CA|CJ|CY)\s([0-9]){3}\-([0-9]){3})$/;
+        var regEx3 = /^(CA|CJ|CY)\s[0-9]{6}$/;
+        var isValid = regEx.test(city)
+        var isValid2 = regEx2.test(city)
+        var isValid3 = regEx3.test(city)
+
+        if(!isValid && !isValid2 && !isValid3){
+            alert()
+            return;
+        }
+
+
+
     var reg = regNumberInstance.cities(textArea)
-    storeReg.push(reg)
+    if(!storeReg.includes(reg)){
+        storeReg.push(reg)
+    }
+    
     localStorage.setItem("registrations", JSON.stringify(storeReg));
     var getRegNumber = JSON.parse(localStorage.getItem('registrations'));
 
@@ -51,10 +68,7 @@ function filterRegTown(){
     var filterStoredReg = JSON.parse(localStorage.getItem('registrations'));
     
     if(checkedRadioBtn){
-        //filtered = regNumberInstance.filterReg(checkedRadioBtn.value)
         var selectedTown = checkedRadioBtn.value
-        //filtered = filtered
-        
 
         if(selectedTown == "CA"){
             if (document.getElementsByClassName('reg_plate2').length){
