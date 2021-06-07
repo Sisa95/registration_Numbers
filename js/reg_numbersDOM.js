@@ -4,43 +4,76 @@ let listCA = document.getElementById("filterCA");
 let listCJ = document.getElementById("filterCJ");
 let listCY = document.getElementById("filterCY");
 
+
+    var regStored = JSON.parse(localStorage.getItem('registrations'));
+    if(localStorage['registrations']){
+        if (document.getElementsByClassName('reg_plate').length){
+            document.querySelectorAll(".reg_plate").forEach(e => e.remove())
+        }
+    
+        for(let i = 0; i <regStored.length; i++){
+            let li = document.createElement("button");
+            li.classList.add("reg_plate");
+    
+            li.innerText = regStored[i]; 
+            list.appendChild(li);
+        }
+    }
+
+
+
+
 var regNumberInstance = registrationNumbers()
+var storeReg = []
 function registration(){
   
     var textArea = document.querySelector(".text").value;
+    var reg = regNumberInstance.cities(textArea)
+    storeReg.push(reg)
+    localStorage.setItem("registrations", JSON.stringify(storeReg));
+    var getRegNumber = JSON.parse(localStorage.getItem('registrations'));
 
-    let li = document.createElement("button");
-    li.classList.add("reg_plate");
-    
-    li.innerText = regNumberInstance.cities(textArea) 
-    list.appendChild(li);
+    if (document.getElementsByClassName('reg_plate').length){
+        document.querySelectorAll(".reg_plate").forEach(e => e.remove())
+    }
+
+    for(let i = 0; i <getRegNumber.length; i++){
+        let li = document.createElement("button");
+        li.classList.add("reg_plate");
+
+        li.innerText = getRegNumber[i]; 
+        list.appendChild(li);
+    }
 }
 
 function filterRegTown(){
     var checkedRadioBtn = document.querySelector("input[name='town']:checked");
+    var filterStoredReg = JSON.parse(localStorage.getItem('registrations'));
     
     if(checkedRadioBtn){
-        filtered = regNumberInstance.filterReg(checkedRadioBtn.value)
-        filtered = filtered
+        //filtered = regNumberInstance.filterReg(checkedRadioBtn.value)
+        var selectedTown = checkedRadioBtn.value
+        //filtered = filtered
         
 
-        if(checkedRadioBtn.value == "CA"){
+        if(selectedTown == "CA"){
             if (document.getElementsByClassName('reg_plate2').length){
                 document.querySelectorAll(".reg_plate2").forEach(e => e.remove())
             }
         } 
-        else if(checkedRadioBtn.value == "CY"){
+        else if(selectedTown == "CY"){
             if (document.getElementsByClassName('reg_plate2').length){
                 document.querySelectorAll(".reg_plate2").forEach(e => e.remove())
             }
-        } else if(checkedRadioBtn.value == "CJ"){
+        } else if(selectedTown == "CJ"){
             if (document.getElementsByClassName('reg_plate2').length){
                 document.querySelectorAll(".reg_plate2").forEach(e => e.remove())
             }
         }
 
-       for(var i = 0; i < regNumberInstance.getFilterLength(); i++){
-            if(checkedRadioBtn.value == "CA"){
+       for(let i = 0; i < filterStoredReg.length ; i++){
+            if(filterStoredReg[i].startsWith(selectedTown)){
+                
                if(listCA.style.display = "none"){
                     listCA.style.display = "block";
                     if (!document.getElementsByClassName('reg_plate2').length){
@@ -52,39 +85,9 @@ function filterRegTown(){
                     let li = document.createElement("button");
                     li.classList.add("reg_plate2");
 
-                    li.innerText =  filtered[i];
+                    li.innerText =  filterStoredReg[i];
                     listCA.appendChild(li);
-                  
-            } else if(checkedRadioBtn.value == "CY"){
-                if(listCY.style.display = "none"){
-                    listCY.style.display = "block";
-                    if(!document.getElementsByClassName('reg_plate2').length){
-                        listCA.style.display = "none";
-                        listCJ.style.display = "none";
-                        listCY.style.backgroundColor = "#817900de"
-                    }
-                }
-                    let li = document.createElement("button");
-                    li.classList.add("reg_plate2");
-    
-                    li.innerText =  filtered[i];
-                    listCY.appendChild(li);
-               
-            } else if(checkedRadioBtn.value == "CJ"){
-                if(listCJ.style.display = "none"){
-                    listCJ.style.display = "block";
-                    if(!document.getElementsByClassName('reg_plate2').length){
-                        listCA.style.display = "none";
-                        listCY.style.display = "none";
-                        listCJ.style.backgroundColor = "#817900de"
-                    }
-                }
-                    let li = document.createElement("button");
-                    li.classList.add("reg_plate2");
-
-                    li.innerText =  filtered[i];
-                    listCJ.appendChild(li);                 
-            }
+            } 
         }
     } 
     checkedRadioBtn.checked = false

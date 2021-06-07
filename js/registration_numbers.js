@@ -17,7 +17,11 @@ function registrationNumbers(){
             if(!found.includes(city)){
                 found.push(city)
                 return city;
+            }  else{
+                return "Town is already stored";
             }
+        } else {
+            return "Invalid Reg Number";
         }
     }
 
@@ -32,9 +36,6 @@ function registrationNumbers(){
 
         if(isValid || isValid2 || isValid3){
             if(!found.includes(city)){
-                found.push(city)
-                return city;
-            } else{
                 return "Town is already stored";
             }
         } else {
@@ -58,10 +59,10 @@ function registrationNumbers(){
     function filterReg(city){
         filter = [];
         for(var i = 0; i < found.length; i++){
-            if(found[i].startsWith(city) ){
-                filter.push(found[i]);
+            if(!found[i].includes(city) ){
+                return "Town Not Stored";
             }
-        } return filter;
+        }
     }
     return{
         cities,
