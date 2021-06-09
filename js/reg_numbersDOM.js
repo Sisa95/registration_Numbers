@@ -33,6 +33,7 @@ function registration(){
             let li = document.createElement("button");
             li.classList.add("reg_plateError");
             if(reg == "Invalid Reg Number"){
+                textArea.innerHTML = reg
                 li.innerText = reg
             } else if(reg == "Town is already stored"){
                 li.innerText = reg
@@ -53,6 +54,9 @@ function registration(){
     if (document.getElementsByClassName('reg_plate').length){
         document.querySelectorAll(".reg_plate").forEach(e => e.remove())
     }
+    if (document.getElementsByClassName('reg_plate2').length){
+        document.querySelectorAll(".reg_plate2").forEach(e => e.remove())
+    }
 
     for(let i = 0; i <getRegNumber.length; i++){
         
@@ -67,9 +71,15 @@ function registration(){
 function filterRegTown(){
     var checkedRadioBtn = document.querySelector("input[name='town']:checked");
     var filterStoredReg = JSON.parse(localStorage.getItem('registrations'));
+
+    
     
     if(checkedRadioBtn){
         var selectedTown = checkedRadioBtn.value
+
+        if (document.getElementsByClassName('reg_plate').length){
+            document.querySelectorAll(".reg_plate").forEach(e => e.remove())
+        }
 
         if(selectedTown == "CA"){
             if (document.getElementsByClassName('reg_plate2').length){
