@@ -1,4 +1,5 @@
 let list = document.getElementById("myList");
+let list2 = document.getElementById("myList2");
 var checkedRadioBtn = document.querySelector("input[name='town']:checked");
 let listCA = document.getElementById("filterCA");
 let listCJ = document.getElementById("filterCJ");
@@ -30,15 +31,14 @@ function registration(){
     var reg = regNumberInstance.cities(textArea)
     if(!storeReg.includes(reg)){
         if(reg == "Invalid Reg Number" || reg == "Town is already stored"){
-            let li = document.createElement("button");
+            let li = document.createElement("p");
             li.classList.add("reg_plateError");
             if(reg == "Invalid Reg Number"){
-                textArea.innerHTML = reg
                 li.innerText = reg
             } else if(reg == "Town is already stored"){
                 li.innerText = reg
             }
-            list.appendChild(li);
+            list2.appendChild(li);
 
             setTimeout(function(){
                 document.querySelector(".reg_plateError").remove()
@@ -56,6 +56,7 @@ function registration(){
     }
     if (document.getElementsByClassName('reg_plate2').length){
         document.querySelectorAll(".reg_plate2").forEach(e => e.remove())
+
     }
 
     for(let i = 0; i <getRegNumber.length; i++){
@@ -94,6 +95,20 @@ function filterRegTown(){
             if (document.getElementsByClassName('reg_plate2').length){
                 document.querySelectorAll(".reg_plate2").forEach(e => e.remove())
             }
+        }  else if(selectedTown == "All"){
+            if (document.getElementsByClassName('reg_plate2').length){
+                document.querySelectorAll(".reg_plate2").forEach(e => e.remove())
+            }
+
+            for(let i = 0; i <regStored.length; i++){
+                let li = document.createElement("button");
+                li.classList.add("reg_plate");
+        
+                li.innerText = regStored[i]; 
+                list.appendChild(li);
+            }
+            checkedRadioBtn.checked = false
+            return;
         }
 
        for(let i = 0; i < filterStoredReg.length ; i++){
@@ -104,7 +119,6 @@ function filterRegTown(){
                     if (!document.getElementsByClassName('reg_plate2').length){
                         listCJ.style.display = "none";
                         listCY.style.display = "none";
-                        listCA.style.backgroundColor = "#817900de" 
                     }
                }
                     let li = document.createElement("button");

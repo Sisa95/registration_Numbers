@@ -38,22 +38,36 @@ describe('Registration numbers', function(){
 
     it("Should be able to return selected town", function(){
         let regNumbers = registrationNumbers()
-        let filter = []
+      
         regNumbers.cities("CY 123 123")
         regNumbers.cities("CY 123-123")
-        regNumbers.cities("CY 122123")
-        regNumbers.cities("CA 123123")
+        regNumbers.cities("CY 122 123")
+        regNumbers.cities("CA 123 123")
         regNumbers.cities("CJ 123123")
-        regNumbers.allTowns()
         regNumbers.filterReg("CJ")
         
         
-        assert.equal(filter, regNumbers.getStoreTown());
+        assert.deepEqual(["CJ 123123"], regNumbers.getStoreTown());
 
-        // let filter = ["CY 123 123","CY 123-123","CY 122123","CA 123123","CJ 123123"]
-        // regNumbers.getStoreTown(filter)
-        // regNumbers.filterReg("CA")
+        let filterResult = ["CY 123 123","CY 123-123","CY 122 123"]
+        regNumbers.cities("CY 123 123")
+        regNumbers.cities("CY 123-123")
+        regNumbers.cities("CY 122 123")
+        regNumbers.cities("CA 123 123")
+        regNumbers.cities("CJ 123123")
+        regNumbers.filterReg("CY")
+        
+        
+        assert.deepEqual(filterResult, regNumbers.getStoreTown());
 
-        // assert.equal("CA 123123", regNumbers.getStoreTown());
+        regNumbers.cities("CY 123 123")
+        regNumbers.cities("CY 123-123")
+        regNumbers.cities("CY 122 123")
+        regNumbers.cities("CA 123 123")
+        regNumbers.cities("CJ 123123")
+        regNumbers.filterReg("CA")
+        
+        
+        assert.deepEqual(["CA 123 123"], regNumbers.getStoreTown());
     });
 })

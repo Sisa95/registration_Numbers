@@ -41,7 +41,10 @@ body {
     border-radius: 15%;
     margin: 5px;
 }
-
+.town{
+    padding: 5px;
+    font-family: Impact;
+}
 
 .demo {
 	width: 90%;

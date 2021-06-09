@@ -36,11 +36,11 @@ function registrationNumbers(regStored){
     function filterReg(city){
         filter = [];
         for(var i = 0; i < found.length; i++){
-            if(!found[i].includes(city) ){
-                filter.push(i);
-                return "Town Not Stored";
-            }
-        } return filter
+            if(found[i].startsWith(city) ){
+                filter.push(found[i]);
+            } 
+        } 
+        return filter
     }
 
 
