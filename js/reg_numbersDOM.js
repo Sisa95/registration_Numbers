@@ -86,7 +86,7 @@ function filterRegTown(){
             }
         }
 
-       for(let i = 0; i < .length ; i++){
+       for(let i = 0; i < filterStoredReg.length ; i++){
             if(filterStoredReg[i].startsWith(selectedTown)){
                 
                if(listCA.style.display = "none"){
@@ -99,7 +99,6 @@ function filterRegTown(){
                }
                     let li = document.createElement("button");
                     li.classList.add("reg_plate2");
-filterStoredReg
                     li.innerText =  filterStoredReg[i];
                     listCA.appendChild(li);
             } 
