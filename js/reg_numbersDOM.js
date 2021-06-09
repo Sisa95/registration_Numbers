@@ -27,23 +27,23 @@ function registration(){
   
     var textArea = document.querySelector(".text").value;
     
-        var city =  textArea.trim().toUpperCase();
-        var regEx = /^((CA|CJ|CY)\s([0-9]){3}\s([0-9]){3})$/;
-        var regEx2 = /^((CA|CJ|CY)\s([0-9]){3}\-([0-9]){3})$/;
-        var regEx3 = /^(CA|CJ|CY)\s[0-9]{6}$/;
-        var isValid = regEx.test(city)
-        var isValid2 = regEx2.test(city)
-        var isValid3 = regEx3.test(city)
-
-        if(!isValid && !isValid2 && !isValid3){
-            alert()
-            return;
-        }
-
-
-
     var reg = regNumberInstance.cities(textArea)
     if(!storeReg.includes(reg)){
+        if(reg == "Invalid Reg Number" || reg == "Town is already stored"){
+            let li = document.createElement("button");
+            li.classList.add("reg_plateError");
+            if(reg == "Invalid Reg Number"){
+                li.innerText = reg
+            } else if(reg == "Town is already stored"){
+                li.innerText = reg
+            }
+            list.appendChild(li);
+
+            setTimeout(function(){
+                document.querySelector(".reg_plateError").remove()
+            }, 2500)
+            return;
+        }
         storeReg.push(reg)
     }
     
@@ -55,10 +55,11 @@ function registration(){
     }
 
     for(let i = 0; i <getRegNumber.length; i++){
+        
         let li = document.createElement("button");
         li.classList.add("reg_plate");
 
-        li.innerText = getRegNumber[i]; 
+        li.innerText = getRegNumber[i] 
         list.appendChild(li);
     }
 }
@@ -85,7 +86,7 @@ function filterRegTown(){
             }
         }
 
-       for(let i = 0; i < filterStoredReg.length ; i++){
+       for(let i = 0; i < .length ; i++){
             if(filterStoredReg[i].startsWith(selectedTown)){
                 
                if(listCA.style.display = "none"){
@@ -98,7 +99,7 @@ function filterRegTown(){
                }
                     let li = document.createElement("button");
                     li.classList.add("reg_plate2");
-
+filterStoredReg
                     li.innerText =  filterStoredReg[i];
                     listCA.appendChild(li);
             } 

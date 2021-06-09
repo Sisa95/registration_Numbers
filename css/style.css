@@ -23,6 +23,15 @@ body {
     border-radius: 15%;
     margin: 5px;
 }
+.reg_plateError{
+    border: 3px solid red;
+    background-color: rgba(90, 90, 90, 0.904);
+    padding: 5px 15px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: justify;
+    border-radius: 15%;
+    margin: 5px;
+}
 
 .reg_plate2{
     border: 3px solid;
