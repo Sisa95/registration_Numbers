@@ -50,9 +50,9 @@ body {
 	width: 90%;
 	max-width: 600px;
 	position: relative;
-	top: 60px;
 	background-color: rgba(255, 251, 251, 0.548);
 	margin: 45px auto;
+    margin-top: 15px;
 	padding: 10px 30px;
 	text-align: center;
 	border-radius: 6px;

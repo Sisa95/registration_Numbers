@@ -27,20 +27,29 @@ var storeReg = regStored || []
 function registration(){
   
     var textArea = document.querySelector(".text").value;
+    var textError =   document.querySelector(".text");
     
     var reg = regNumberInstance.cities(textArea)
+  
     if(!storeReg.includes(reg)){
         if(reg == "Invalid Reg Number" || reg == "Town is already stored"){
-            let li = document.createElement("p");
-            li.classList.add("reg_plateError");
+           
             if(reg == "Invalid Reg Number"){
-                li.innerText = reg
+                textError.style.color = "red";
+                textError.style.fontFamily = "impact"
+                textError.style.border = "2px solid red"
+                textError.value = reg
             } else if(reg == "Town is already stored"){
-                li.innerText = reg
-            }
-            list2.appendChild(li);
+                let li = document.createElement("p");
+                li.classList.add("reg_plateError");
+                li.innerText = reg;
+                list2.appendChild(li);
+            }         
 
             setTimeout(function(){
+                document.querySelector(".text").value = ""
+                textError.style.color = "rgb(3, 3, 46)";
+                textError.style.border = "";
                 document.querySelector(".reg_plateError").remove()
             }, 2500)
             return;
@@ -67,6 +76,7 @@ function registration(){
         li.innerText = getRegNumber[i] 
         list.appendChild(li);
     }
+    document.querySelector(".text").value = ""
 }
 
 function filterRegTown(){
