@@ -30,16 +30,21 @@ function registrationNumbers(regStored){
     }
     
     function getStoreTown(){
+        if(filter.length == 0){
+            return "Town not stored"; 
+         }
         return filter;
     }
 
     function filterReg(city){
         filter = [];
+        var regNo = "";
         for(var i = 0; i < found.length; i++){
             if(found[i].startsWith(city) ){
                 filter.push(found[i]);
-            } 
-        } 
+                regNo = found[i]
+            }
+        }
         return filter
     }
 

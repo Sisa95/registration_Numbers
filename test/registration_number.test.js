@@ -70,4 +70,15 @@ describe('Registration numbers', function(){
         
         assert.deepEqual(["CA 123 123"], regNumbers.getStoreTown());
     });
+    it("It should return an error message when the town is not found", function(){
+        let regNumbers = registrationNumbers()
+        
+        regNumbers.cities("CY 123 123")
+        regNumbers.cities("CY 123-123")
+        regNumbers.cities("CY 122123")
+        regNumbers.cities("CJ 123123")
+        regNumbers.filterReg("CA")
+                
+        assert.equal("Town not stored", regNumbers.getStoreTown());
+    });
 })
