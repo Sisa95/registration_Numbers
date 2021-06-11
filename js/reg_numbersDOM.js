@@ -83,13 +83,16 @@ function filterRegTown(){
     var checkedRadioBtn = document.querySelector("input[name='town']:checked");
     var filterStoredReg = JSON.parse(localStorage.getItem('registrations'));
 
-    
-    
+ 
     if(checkedRadioBtn){
         var selectedTown = checkedRadioBtn.value
 
         if (document.getElementsByClassName('reg_plate').length){
             document.querySelectorAll(".reg_plate").forEach(e => e.remove())
+        }
+
+        if (document.getElementsByClassName('reg_plateError').length){
+            document.querySelectorAll(".reg_plateError").forEach(e => e.remove())
         }
 
         if(selectedTown == "CA"){
@@ -121,9 +124,21 @@ function filterRegTown(){
             return;
         }
 
+        if(filterStoredReg == null){
+            let li = document.createElement("p");
+            li.classList.add("reg_plateError");
+            li.innerText =  "No Registration number stored";
+            listCA.appendChild(li);
+
+            setTimeout(function(){
+                document.querySelector(".reg_plateError").remove()
+            }, 2500)
+            return
+        }
+
        for(let i = 0; i < filterStoredReg.length ; i++){
             if(filterStoredReg[i].startsWith(selectedTown)){
-                
+          
                if(listCA.style.display = "none"){
                     listCA.style.display = "block";
                     if (!document.getElementsByClassName('reg_plate2').length){
@@ -135,13 +150,27 @@ function filterRegTown(){
                     li.classList.add("reg_plate2");
                     li.innerText =  filterStoredReg[i];
                     listCA.appendChild(li);
-            } 
+                    checkedRadioBtn.checked = false;
+                    alert(filterStoredReg[i])
+                    return;
+            } else {
+                if (document.getElementsByClassName('reg_plateError').length){
+                    document.querySelectorAll(".reg_plateError").forEach(e => e.remove())
+                }
+
+                let li = document.createElement("p");
+                li.classList.add("reg_plateError");
+                li.innerText =  "Sorry Registrations From This Town Don't Exist";
+                listCA.appendChild(li);
+                checkedRadioBtn.checked = false                
+                return
+            }
         }
     } 
-    checkedRadioBtn.checked = false
+    //checkedRadioBtn.checked = false
 
     if(checkedRadioBtn){
-        checkedRadioBtn = document.querySelector("input[name='town']:checked");
+        checkedRadioBtn = document.querySelector("input[name='town']");
     }
 }
 
