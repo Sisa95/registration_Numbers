@@ -80,6 +80,7 @@ function registration() {
 }
 
 function filterRegTown() {
+    var regStored = JSON.parse(localStorage.getItem('registrations'));
     var checkedRadioBtn = document.querySelector("input[name='town']:checked");
     var filterStoredReg = JSON.parse(localStorage.getItem('registrations'));
 
@@ -93,6 +94,15 @@ function filterRegTown() {
             }
             if (document.getElementsByClassName('reg_plateError').length) {
                 document.querySelectorAll(".reg_plateError").forEach(e => e.remove())
+            }
+
+            if(filterStoredReg == null){
+                let li = document.createElement("p");
+                li.classList.add("reg_plateError");
+                li.innerText = "No Registration Numbers Stored";
+                list.appendChild(li);
+                checkedRadioBtn.checked = false
+                return
             }
 
             for (let i = 0; i < regStored.length; i++) {
@@ -120,18 +130,6 @@ function filterRegTown() {
             li.innerText =  "Sorry Registrations From This Town Don't Exist";
             list.appendChild(li);
             checkedRadioBtn.checked = false                
-            return
-        }
-
-        if(filterStoredReg == null){
-            let li = document.createElement("p");
-            li.classList.add("reg_plateError");
-            li.innerText = "No Registration number stored";
-            listCA.appendChild(li);
-
-            setTimeout(function () {
-                document.querySelector(".reg_plateError").remove()
-            }, 2500)
             return
         }
 
