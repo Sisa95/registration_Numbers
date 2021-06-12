@@ -64,6 +64,9 @@ function registration() {
     if (document.getElementsByClassName('reg_plate').length) {
         document.querySelectorAll(".reg_plate").forEach(e => e.remove())
     }
+    if (document.getElementsByClassName('reg_plateError').length) {
+        document.querySelectorAll(".reg_plateError").forEach(e => e.remove())
+    }
 
     for (let i = 0; i < getRegNumber.length; i++) {
 
@@ -108,6 +111,9 @@ function filterRegTown() {
                 if (document.getElementsByClassName('reg_plate').length) {
                     document.querySelectorAll(".reg_plate").forEach(e => e.remove())
                 }
+            }
+            if (document.getElementsByClassName('reg_plateError').length) {
+                document.querySelectorAll(".reg_plateError").forEach(e => e.remove())
             }
             let li = document.createElement("p");
             li.classList.add("reg_plateError");
