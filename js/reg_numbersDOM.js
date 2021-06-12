@@ -42,13 +42,16 @@ function registration() {
                 li.classList.add("reg_plateError");
                 li.innerText = reg;
                 list2.appendChild(li);
+
+                setTimeout(function () {
+                    document.querySelector(".reg_plateError").remove()
+                }, 2500)
             }
 
             setTimeout(function () {
                 document.querySelector(".text").value = ""
                 textError.style.color = "rgb(3, 3, 46)";
                 textError.style.border = "";
-                document.querySelector(".reg_plateError").remove()
             }, 2500)
             return;
         }
@@ -132,7 +135,7 @@ function filterRegTown() {
 
         if (document.getElementsByClassName('reg_plateError').length) {
             document.querySelectorAll(".reg_plateError").forEach(e => e.remove())
-        } //////////////////////////// STOP UNDO HERE //////////////////////////////
+        } 
         for (let i = 0; i < filterStoredReg.length; i++) {
             if (filterStoredReg[i].startsWith(selectedTown)) {
                 let li = document.createElement("button");
